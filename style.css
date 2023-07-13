@@ -29,6 +29,7 @@
 body {
   font-family: "Rubik", sans-serif;
   font-size: 18px;
+  font-weight: 300;
 }
 
 #app {
@@ -38,6 +39,7 @@ body {
 }
 
 .container {
+  --radius: 16px;
   width: 90%;
   margin-left: auto;
   margin-right: auto;
@@ -54,14 +56,16 @@ body {
 .si {
   --direction: row;
   --aligning: center;
+  --spacing: 1rem;
+
   padding: 32px;
   display: flex;
   flex-direction: var(--direction);
   align-items: var(--aligning);
-  gap: 1rem;
+  gap: var(--spacing);
   background-color: var(--primary-blue);
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
   height: 60%;
 }
 
@@ -90,13 +94,12 @@ body {
 
 .sidebar-user h1 {
   font-size: 24px;
-  font-weight: 400;
+  font-weight: 300;
   color: #ffffff;
 }
 
 .sc {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  display: flex;
   gap: 4px;
   padding: 24px 32px;
 }
@@ -119,11 +122,17 @@ body {
   text-align: right;
 }
 
-.sc-button:hover {
+.sc-button:hover,
+.sc-button:focus {
   color: white;
 }
 
-.sc-button.sc-bitton--active {
+.sc-button:focus {
+  outline-color: white;
+  outline-width: 1px;
+}
+
+.sc-button.sc-button--active {
   color: white;
 }
 
@@ -134,7 +143,6 @@ body {
 }
 
 .tt {
-  --radius: 16px;
   border-radius: var(--radius);
   overflow: hidden;
   position: relative;
@@ -154,6 +162,7 @@ body {
   border-top-right-radius: var(--radius);
   display: grid;
   gap: 8px;
+  overflow: hidden;
 }
 
 .tt-inner > div {
@@ -166,12 +175,13 @@ body {
   font-size: 20px;
   color: white;
   text-transform: capitalize;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .tt-hour {
   font-size: 32px;
   color: white;
+  font-weight: 300;
 }
 
 .tt-time {
@@ -201,7 +211,7 @@ body {
 @media (min-width: 1024px) {
   .container {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    grid-template-rows: repeat(2, minmax(100px, 200px));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
   }
 
   .sidebar {
@@ -211,19 +221,34 @@ body {
 
   .si {
     --direction: column;
-    --aligning: left;
+    --aligning: start;
+    --spacing: 2rem;
+
     height: 65%;
   }
 
+  .sidebar-user h1 {
+    font-size: 32px;
+  }
+
   .sc {
-    grid-template-columns: repeat(1, 1fr);
-    gap: 16px;
+    padding: 9px 0;
+    flex-direction: column;
+    height: 35%;
+    justify-content: center;
   }
 
   .sc-button:first-child,
   .sc-button:nth-child(2),
   .sc-button:last-child {
     text-align: left;
+  }
+
+  .sc-button {
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-top: 9px;
+    padding-bottom: 9px;
   }
 
   .main {
@@ -235,7 +260,14 @@ body {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .tt-inner {
-    margin-bottom: auto;
+  .tt-inner > div:last-child {
+    gap: 8px;
+    align-items: start;
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+
+  .tt-hour {
+    font-size: 48px;
   }
 }
