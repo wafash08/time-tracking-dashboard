@@ -1,0 +1,241 @@
+:root {
+  --primary-blue: hsl(246, 80%, 60%);
+  /* (work) */
+  --bg-work: hsl(15, 100%, 70%);
+  /*  (play) */
+  --bg-play: hsl(195, 74%, 62%);
+  /* study */
+  --bg-study: hsl(348, 100%, 68%);
+  /*  (exercise) */
+  --bg-exercise: hsl(145, 58%, 55%);
+  /* (social) */
+  --bg-social: hsl(264, 64%, 52%);
+  /*  (self care) */
+  --bg-self-care: hsl(43, 84%, 65%);
+
+  /* Neutral */
+  --neutral-very-dark-blue: hsl(226, 43%, 10%);
+  --neutral-dark-blue: hsl(235, 46%, 20%);
+  --neutral-desaturated-blue: hsl(235, 45%, 61%);
+  --neutral-pale-blue: hsl(236, 100%, 87%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Rubik", sans-serif;
+  font-size: 18px;
+}
+
+#app {
+  background-color: var(--neutral-very-dark-blue);
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.container {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  gap: 20px;
+}
+
+.sidebar {
+  background-color: var(--neutral-dark-blue);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.si {
+  --direction: row;
+  --aligning: center;
+  padding: 32px;
+  display: flex;
+  flex-direction: var(--direction);
+  align-items: var(--aligning);
+  gap: 1rem;
+  background-color: var(--primary-blue);
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  height: 60%;
+}
+
+.sidebar-user-avatar {
+  display: grid;
+  place-content: center;
+}
+
+.sidebar-user-avatar img {
+  width: 75px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  border: 1px solid white;
+}
+
+.sidebar-user {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sidebar-user p {
+  color: var(--neutral-pale-blue);
+  font-size: 16px;
+}
+
+.sidebar-user h1 {
+  font-size: 24px;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+.sc {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+  padding: 24px 32px;
+}
+
+.sc-button {
+  background-color: transparent;
+  border: none;
+  font-size: 18px;
+  color: var(--neutral-pale-blue);
+  transition: 250ms ease-in color;
+  cursor: pointer;
+  text-align: left;
+}
+
+.sc-button:nth-child(2) {
+  text-align: center;
+}
+
+.sc-button:last-child {
+  text-align: right;
+}
+
+.sc-button:hover {
+  color: white;
+}
+
+.sc-button.sc-bitton--active {
+  color: white;
+}
+
+/* time tracker */
+.main {
+  display: grid;
+  gap: 20px;
+}
+
+.tt {
+  --radius: 16px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+}
+
+.tt-svg {
+  position: absolute;
+  top: -8px;
+  right: 16px;
+}
+
+.tt-inner {
+  margin-top: 40px;
+  background-color: var(--neutral-dark-blue);
+  padding: 32px;
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+  display: grid;
+  gap: 8px;
+}
+
+.tt-inner > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tt-title {
+  font-size: 20px;
+  color: white;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+.tt-hour {
+  font-size: 32px;
+  color: white;
+}
+
+.tt-time {
+  color: var(--neutral-pale-blue);
+  font-size: 14px;
+}
+
+.tt--work {
+  background-color: var(--bg-work);
+}
+.tt--play {
+  background-color: var(--bg-play);
+}
+.tt--study {
+  background-color: var(--bg-study);
+}
+.tt--exercise {
+  background-color: var(--bg-exercise);
+}
+.tt--social {
+  background-color: var(--bg-social);
+}
+.tt--self-care {
+  background-color: var(--bg-self-care);
+}
+
+@media (min-width: 1024px) {
+  .container {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(100px, 200px));
+  }
+
+  .sidebar {
+    grid-row-start: 1;
+    grid-row-end: 3;
+  }
+
+  .si {
+    --direction: column;
+    --aligning: left;
+    height: 65%;
+  }
+
+  .sc {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 16px;
+  }
+
+  .sc-button:first-child,
+  .sc-button:nth-child(2),
+  .sc-button:last-child {
+    text-align: left;
+  }
+
+  .main {
+    grid-column-start: 2;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .tt-inner {
+    margin-bottom: auto;
+  }
+}
