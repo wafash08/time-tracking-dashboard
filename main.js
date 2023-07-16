@@ -19,9 +19,9 @@ function getTrackersByTimeframe(timeframe, trackers) {
   return tracker;
 }
 
-// ubah title yang terdiri dari dua kata dan dipisahkan oleh spasi menjadi satu kata dan dipisahkan oleh -. contoh: "Self Care" menjadi "self-care"
-function toKebabCase(title) {
-  return title.toLowerCase().split(" ").join("-");
+// menguubah string yang terdiri dari dua kata dan dipisahkan oleh spasi menjadi satu kata dan dipisahkan oleh -. contoh: "Self Care" menjadi "self-care"
+function toKebabCase(string) {
+  return string.toLowerCase().split(" ").join("-");
 }
 
 function renderTrackers(trackers) {
@@ -30,10 +30,10 @@ function renderTrackers(trackers) {
   trackers.forEach(({ title, trackerByTimeframe }) => {
     let { current, previous } = trackerByTimeframe;
 
-    let prevSuffix = previous > 1 ? "hrs" : "hr";
-    let currSuffix = previous > 1 ? "hrs" : "hr";
+    let prevSuffix = Number(previous) > 1 ? "hrs" : "hr";
+    let currSuffix = Number(current) > 1 ? "hrs" : "hr";
 
-    html += `<div class="tt tt--${toKebabCase(title)}">
+    html += `<li class="tt tt--${toKebabCase(title)}">
     <div class="tt-inner">
       <div>
         <h2 class="tt-title">${title}</h2>
@@ -50,27 +50,27 @@ function renderTrackers(trackers) {
         <p class="tt-time">Last Week - ${previous}${prevSuffix}</p>
       </div>
     </div>
-  </div>`;
+  </li>`;
   });
   return html;
 }
 
 dailyTracker.addEventListener("click", e => {
-  console.log("daily triggered");
+  const current = e.currentTarget;
+  const tracker = current.dataset.tracker;
+  console.log(tracker);
   ttContainer.innerHTML = renderTrackers(
     getTrackersByTimeframe("daily", TIME_TRACKER)
   );
 });
 
 weeklyTracker.addEventListener("click", e => {
-  console.log("weekly triggered");
   ttContainer.innerHTML = renderTrackers(
     getTrackersByTimeframe("weekly", TIME_TRACKER)
   );
 });
 
 monthlyTracker.addEventListener("click", e => {
-  console.log("monthly triggered");
   ttContainer.innerHTML = renderTrackers(
     getTrackersByTimeframe("monthly", TIME_TRACKER)
   );

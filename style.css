@@ -41,6 +41,7 @@ body {
 .container {
   --radius: 16px;
   width: 90%;
+  max-width: 1024px;
   margin-left: auto;
   margin-right: auto;
   display: grid;
@@ -215,6 +216,70 @@ body {
 .tt--self-care {
   background-color: var(--bg-self-care);
   background-image: url("/images/icon-self-care.svg");
+}
+
+@media (min-width: 768px) {
+  .container {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+  }
+
+  .sidebar {
+    grid-row-start: 1;
+    grid-row-end: 3;
+  }
+
+  .tt-container {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .si {
+    --direction: column;
+    --aligning: start;
+    --spacing: 2rem;
+
+    height: 60%;
+  }
+
+  .sidebar-user h1 {
+    font-size: 32px;
+  }
+
+  .sc {
+    padding: 32px 0;
+    flex-direction: column;
+    height: 40%;
+    justify-content: start;
+  }
+
+  .sc-button:first-child,
+  .sc-button:nth-child(2),
+  .sc-button:last-child {
+    text-align: left;
+  }
+
+  .sc-button {
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+  }
+
+  .tt-inner > div:last-child {
+    gap: 4px;
+    align-items: start;
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+
+  .tt-hour {
+    font-size: 32px;
+  }
 }
 
 @media (min-width: 1024px) {
