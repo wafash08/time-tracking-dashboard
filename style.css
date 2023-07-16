@@ -145,13 +145,6 @@ body {
 .tt {
   border-radius: var(--radius);
   overflow: hidden;
-  position: relative;
-}
-
-.tt-svg {
-  position: absolute;
-  top: -8px;
-  right: 16px;
 }
 
 .tt-inner {
@@ -189,23 +182,39 @@ body {
   font-size: 14px;
 }
 
+.tt--work,
+.tt--play,
+.tt--study,
+.tt--exercise,
+.tt--social,
+.tt--self-care {
+  background-position: right 18px top -9px;
+  background-repeat: no-repeat;
+}
+
 .tt--work {
   background-color: var(--bg-work);
+  background-image: url("/images/icon-work.svg");
 }
 .tt--play {
   background-color: var(--bg-play);
+  background-image: url("/images/icon-play.svg");
 }
 .tt--study {
   background-color: var(--bg-study);
+  background-image: url("/images/icon-study.svg");
 }
 .tt--exercise {
   background-color: var(--bg-exercise);
+  background-image: url("/images/icon-exercise.svg");
 }
 .tt--social {
   background-color: var(--bg-social);
+  background-image: url("/images/icon-social.svg");
 }
 .tt--self-care {
   background-color: var(--bg-self-care);
+  background-image: url("/images/icon-self-care.svg");
 }
 
 @media (min-width: 1024px) {
