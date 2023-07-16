@@ -100,7 +100,7 @@ body {
 
 .sc {
   display: flex;
-  gap: 4px;
+  justify-content: space-between;
   padding: 24px 32px;
 }
 
@@ -137,7 +137,7 @@ body {
 }
 
 /* time tracker */
-.main {
+.tt-container {
   display: grid;
   gap: 20px;
 }
@@ -251,7 +251,7 @@ body {
     padding-bottom: 9px;
   }
 
-  .main {
+  .tt-container {
     grid-column-start: 2;
     grid-column-end: 5;
     grid-row-start: 1;
