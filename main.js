@@ -55,29 +55,37 @@ function renderTrackers(trackers) {
   return html;
 }
 
+function removeActiveTracker(current, trackers) {
+  if (!current.classList.contains("sc-button--active")) {
+    current.classList.add("sc-button--active");
+    trackers.forEach(tracker => tracker.classList.remove("sc-button--active"));
+  }
+}
+
 dailyTracker.addEventListener("click", e => {
-  const current = e.currentTarget;
-  const tracker = current.dataset.tracker;
-  console.log(tracker);
   ttContainer.innerHTML = renderTrackers(
     getTrackersByTimeframe("daily", TIME_TRACKER)
   );
+  removeActiveTracker(e.currentTarget, [weeklyTracker, monthlyTracker]);
 });
 
 weeklyTracker.addEventListener("click", e => {
   ttContainer.innerHTML = renderTrackers(
     getTrackersByTimeframe("weekly", TIME_TRACKER)
   );
+  removeActiveTracker(e.currentTarget, [dailyTracker, monthlyTracker]);
 });
 
 monthlyTracker.addEventListener("click", e => {
   ttContainer.innerHTML = renderTrackers(
     getTrackersByTimeframe("monthly", TIME_TRACKER)
   );
+  removeActiveTracker(e.currentTarget, [dailyTracker, weeklyTracker]);
 });
 
 window.addEventListener("DOMContentLoaded", () => {
   ttContainer.innerHTML = renderTrackers(
     getTrackersByTimeframe("weekly", TIME_TRACKER)
   );
+  weeklyTracker.classList.add("sc-button--active");
 });
