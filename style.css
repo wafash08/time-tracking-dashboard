@@ -186,6 +186,7 @@ body {
 .tt__time {
   color: var(--neutral-pale-blue);
   font-size: 0.875rem;
+  text-transform: capitalize;
 }
 
 .tt--work,

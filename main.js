@@ -7,11 +7,17 @@ const weeklyTracker = document.querySelector('[data-tracker="weekly"]');
 const monthlyTracker = document.querySelector('[data-tracker="monthly"]');
 
 function getTrackersByTimeframe(timeframe, trackers) {
+  const TIMEFRAMES = {
+    daily: "yesterday",
+    weekly: "last week",
+    monthly: "last month",
+  };
   let tracker = [];
 
   for (let item of trackers) {
     tracker.push({
       title: item.title,
+      timeframe: TIMEFRAMES[timeframe],
       trackerByTimeframe: item.timeframes[timeframe],
     });
   }
@@ -27,7 +33,7 @@ function toKebabCase(string) {
 function renderTrackers(trackers) {
   let html = "";
 
-  trackers.forEach(({ title, trackerByTimeframe }) => {
+  trackers.forEach(({ title, timeframe, trackerByTimeframe }) => {
     let { current, previous } = trackerByTimeframe;
 
     let prevSuffix = Number(previous) > 1 ? "hrs" : "hr";
@@ -47,7 +53,7 @@ function renderTrackers(trackers) {
       </div>
       <div>
         <p class="tt__hour">${current}${currSuffix}</p>
-        <p class="tt__time">Last Week - ${previous}${prevSuffix}</p>
+        <p class="tt__time">${timeframe} - ${previous}${prevSuffix}</p>
       </div>
     </div>
   </li>`;
