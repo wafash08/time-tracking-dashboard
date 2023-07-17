@@ -36,7 +36,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [Add solution URL here]([https://your-solution-url.com](https://www.frontendmentor.io/solutions/responsive-time-tracking-dashboard-Zx20cVBEYL))
 - Live Site URL: [https://time-tracking-dashboard-wfsh.netlify.app/](https://time-tracking-dashboard-wfsh.netlify.app/)
 
 ## My process
