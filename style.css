@@ -101,10 +101,10 @@ body {
 .sc {
   display: flex;
   justify-content: space-between;
-  padding: 24px 32px;
 }
 
 .sc__button {
+  padding: 1.5rem 2rem;
   background-color: transparent;
   border: none;
   font-size: 18px;
@@ -139,7 +139,7 @@ body {
 /* time tracker */
 .tt__container {
   display: grid;
-  gap: 20px;
+  gap: 1.25rem;
 }
 
 .tt {
@@ -148,20 +148,20 @@ body {
 }
 
 .tt__inner {
-  margin-top: 40px;
+  margin-top: 2.5rem;
   background-color: var(--neutral-dark-blue);
-  padding: 32px;
+  padding: 2rem;
   border-top-left-radius: var(--radius);
   border-top-right-radius: var(--radius);
   display: grid;
-  gap: 8px;
+  gap: 0.5rem;
   overflow: hidden;
   transition: all ease-in-out 200ms;
 }
 
 .tt:hover .tt__inner {
   margin-top: 0;
-  padding-top: 72px;
+  padding-top: 4.5rem;
 }
 
 .tt__inner > div {
@@ -171,21 +171,21 @@ body {
 }
 
 .tt__title {
-  font-size: 20px;
+  font-size: 1.25rem;
   color: white;
   text-transform: capitalize;
   font-weight: 400;
 }
 
 .tt__hour {
-  font-size: 32px;
+  font-size: 2rem;
   color: white;
   font-weight: 300;
 }
 
 .tt__time {
   color: var(--neutral-pale-blue);
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 .tt--work,
@@ -248,6 +248,7 @@ body {
     --aligning: start;
     --spacing: 2rem;
 
+    justify-content: center;
     height: 60%;
   }
 
@@ -269,10 +270,11 @@ body {
   }
 
   .sc__button {
-    padding-left: 2rem;
-    padding-right: 2rem;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    padding: 0.75rem 2rem;
+  }
+
+  .tt__inner {
+    gap: 1.25rem;
   }
 
   .tt__inner > div:last-child {
@@ -293,6 +295,7 @@ body {
   }
 
   .si {
+    justify-content: start;
     height: 65%;
   }
 
