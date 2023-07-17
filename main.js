@@ -1,6 +1,6 @@
 import TIME_TRACKER from "./data.json";
 
-const ttContainer = document.querySelector(".tt-container");
+const ttContainer = document.querySelector(".tt__container");
 
 const dailyTracker = document.querySelector('[data-tracker="daily"]');
 const weeklyTracker = document.querySelector('[data-tracker="weekly"]');
@@ -34,9 +34,9 @@ function renderTrackers(trackers) {
     let currSuffix = Number(current) > 1 ? "hrs" : "hr";
 
     html += `<li class="tt tt--${toKebabCase(title)}">
-    <div class="tt-inner">
+    <div class="tt__inner">
       <div>
-        <h2 class="tt-title">${title}</h2>
+        <h2 class="tt__title">${title}</h2>
         <svg width="21" height="5" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M2.5 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Zm8 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Zm8 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Z"
@@ -46,8 +46,8 @@ function renderTrackers(trackers) {
         </svg>
       </div>
       <div>
-        <p class="tt-hour">${current}${currSuffix}</p>
-        <p class="tt-time">Last Week - ${previous}${prevSuffix}</p>
+        <p class="tt__hour">${current}${currSuffix}</p>
+        <p class="tt__time">Last Week - ${previous}${prevSuffix}</p>
       </div>
     </div>
   </li>`;
@@ -56,9 +56,9 @@ function renderTrackers(trackers) {
 }
 
 function removeActiveTracker(current, trackers) {
-  if (!current.classList.contains("sc-button--active")) {
-    current.classList.add("sc-button--active");
-    trackers.forEach(tracker => tracker.classList.remove("sc-button--active"));
+  if (!current.classList.contains("sc__button--active")) {
+    current.classList.add("sc__button--active");
+    trackers.forEach(tracker => tracker.classList.remove("sc__button--active"));
   }
 }
 
@@ -87,5 +87,5 @@ window.addEventListener("DOMContentLoaded", () => {
   ttContainer.innerHTML = renderTrackers(
     getTrackersByTimeframe("weekly", TIME_TRACKER)
   );
-  weeklyTracker.classList.add("sc-button--active");
+  weeklyTracker.classList.add("sc__button--active");
 });

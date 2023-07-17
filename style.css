@@ -50,7 +50,7 @@ body {
 
 .sidebar {
   background-color: var(--neutral-dark-blue);
-  border-radius: 12px;
+  border-radius: var(--radius);
   overflow: hidden;
 }
 
@@ -67,33 +67,32 @@ body {
   background-color: var(--primary-blue);
   border-bottom-left-radius: var(--radius);
   border-bottom-right-radius: var(--radius);
-  height: 60%;
 }
 
-.sidebar-user-avatar {
+.si__avatar {
   display: grid;
   place-content: center;
 }
 
-.sidebar-user-avatar img {
+.si__avatar img {
   width: 75px;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   border: 1px solid white;
 }
 
-.sidebar-user {
+.si__user {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 
-.sidebar-user p {
+.si__user p {
   color: var(--neutral-pale-blue);
   font-size: 16px;
 }
 
-.sidebar-user h1 {
+.si__user h1 {
   font-size: 24px;
   font-weight: 300;
   color: #ffffff;
@@ -105,7 +104,7 @@ body {
   padding: 24px 32px;
 }
 
-.sc-button {
+.sc__button {
   background-color: transparent;
   border: none;
   font-size: 18px;
@@ -115,30 +114,30 @@ body {
   text-align: left;
 }
 
-.sc-button:nth-child(2) {
+.sc__button:nth-child(2) {
   text-align: center;
 }
 
-.sc-button:last-child {
+.sc__button:last-child {
   text-align: right;
 }
 
-.sc-button:hover,
-.sc-button:focus {
+.sc__button:hover,
+.sc__button:focus {
   color: white;
 }
 
-.sc-button:focus {
+.sc__button:focus {
   outline-color: white;
   outline-width: 1px;
 }
 
-.sc-button.sc-button--active {
+.sc__button.sc__button--active {
   color: white;
 }
 
 /* time tracker */
-.tt-container {
+.tt__container {
   display: grid;
   gap: 20px;
 }
@@ -148,7 +147,7 @@ body {
   overflow: hidden;
 }
 
-.tt-inner {
+.tt__inner {
   margin-top: 40px;
   background-color: var(--neutral-dark-blue);
   padding: 32px;
@@ -157,28 +156,34 @@ body {
   display: grid;
   gap: 8px;
   overflow: hidden;
+  transition: all ease-in-out 200ms;
 }
 
-.tt-inner > div {
+.tt:hover .tt__inner {
+  margin-top: 0;
+  padding-top: 72px;
+}
+
+.tt__inner > div {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.tt-title {
+.tt__title {
   font-size: 20px;
   color: white;
   text-transform: capitalize;
   font-weight: 400;
 }
 
-.tt-hour {
+.tt__hour {
   font-size: 32px;
   color: white;
   font-weight: 300;
 }
 
-.tt-time {
+.tt__time {
   color: var(--neutral-pale-blue);
   font-size: 14px;
 }
@@ -229,7 +234,7 @@ body {
     grid-row-end: 3;
   }
 
-  .tt-container {
+  .tt__container {
     grid-column-start: 2;
     grid-column-end: 4;
     grid-row-start: 1;
@@ -246,86 +251,58 @@ body {
     height: 60%;
   }
 
-  .sidebar-user h1 {
-    font-size: 32px;
+  .si__user h1 {
+    font-size: 2rem;
   }
 
   .sc {
-    padding: 32px 0;
+    padding: 2rem 0;
     flex-direction: column;
     height: 40%;
     justify-content: start;
   }
 
-  .sc-button:first-child,
-  .sc-button:nth-child(2),
-  .sc-button:last-child {
+  .sc__button:first-child,
+  .sc__button:nth-child(2),
+  .sc__button:last-child {
     text-align: left;
   }
 
-  .sc-button {
-    padding-left: 32px;
-    padding-right: 32px;
-    padding-top: 9px;
-    padding-bottom: 9px;
+  .sc__button {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
   }
 
-  .tt-inner > div:last-child {
-    gap: 4px;
+  .tt__inner > div:last-child {
+    gap: 0.25rem;
     align-items: start;
     justify-content: flex-start;
     flex-direction: column;
   }
 
-  .tt-hour {
-    font-size: 32px;
+  .tt__hour {
+    font-size: 2rem;
   }
 }
 
 @media (min-width: 1024px) {
   .container {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    grid-template-rows: repeat(2, minmax(0, 1fr));
-  }
-
-  .sidebar {
-    grid-row-start: 1;
-    grid-row-end: 3;
   }
 
   .si {
-    --direction: column;
-    --aligning: start;
-    --spacing: 2rem;
-
     height: 65%;
   }
 
-  .sidebar-user h1 {
-    font-size: 32px;
-  }
-
   .sc {
-    padding: 9px 0;
-    flex-direction: column;
+    padding: 0.5rem 0;
     height: 35%;
     justify-content: center;
   }
 
-  .sc-button:first-child,
-  .sc-button:nth-child(2),
-  .sc-button:last-child {
-    text-align: left;
-  }
-
-  .sc-button {
-    padding-left: 32px;
-    padding-right: 32px;
-    padding-top: 9px;
-    padding-bottom: 9px;
-  }
-
-  .tt-container {
+  .tt__container {
     grid-column-start: 2;
     grid-column-end: 5;
     grid-row-start: 1;
@@ -334,14 +311,11 @@ body {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .tt-inner > div:last-child {
-    gap: 8px;
-    align-items: start;
-    justify-content: flex-start;
-    flex-direction: column;
+  .tt__inner > div:last-child {
+    gap: 0.5rem;
   }
 
-  .tt-hour {
-    font-size: 48px;
+  .tt__hour {
+    font-size: 3rem;
   }
 }
